@@ -39,7 +39,7 @@ $ npm install
 $ npm run migrate
 
 # step-2: seed
-$ npm run seed:run --specific=categories.ts --specific=customers.ts --specific=employees.ts --specific=suppliers.ts --specific=shippers.ts  --specific=products.ts --specific=orders.ts --specific=orderDetails.ts
+$ npm run seed:run
 ```
 
 ## Running the app

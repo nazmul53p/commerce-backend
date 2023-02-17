@@ -33,12 +33,12 @@ import { CategoryModule } from './modules/category/category.module';
                 },
                 migrations: {
                     extension: 'ts',
-                    directory: "./src/migrations"
+                    directory: './src/migrations',
                 },
                 seeds: {
                     extension: 'ts',
-                    directory: "./src/seeds"
-                }
+                    directory: './src/seeds',
+                },
             },
         }),
         AuthModule,
