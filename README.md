@@ -31,6 +31,7 @@
 ```bash
 $ npm install
 ```
+
 ## Migrate & Seed
 
 ```bash
@@ -38,7 +39,7 @@ $ npm install
 $ npm run migrate
 
 # step-2: seed
-$ npm run seed:run --specific=seedfile.ts
+$ npm run seed:run --specific=categories.ts --specific=customers.ts --specific=employees.ts --specific=suppliers.ts --specific=shippers.ts  --specific=products.ts --specific=orders.ts --specific=orderDetails.ts
 ```
 
 ## Running the app
@@ -73,9 +74,9 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 
 ## Stay in touch
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+-   Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
+-   Website - [https://nestjs.com](https://nestjs.com/)
+-   Twitter - [@nestframework](https://twitter.com/nestframework)
 
 ## License
 
