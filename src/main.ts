@@ -23,6 +23,7 @@ async function bootstrap() {
             },
         }),
     );
+
     const config = new DocumentBuilder()
         .setTitle('E-commerce')
         .setDescription('The cats API description')
@@ -41,6 +42,7 @@ async function bootstrap() {
             'jwt',
         )
         .build();
+
     const document = SwaggerModule.createDocument(app, config);
     SwaggerModule.setup('api', app, document);
 

@@ -1,49 +1,31 @@
-# Building layer
-FROM node:18 as development
+# Use Node.js version 14 as the base image
+FROM node:18-alpine
 
-# Optional NPM automation (auth) token build argument
-# ARG NPM_TOKEN
-
-# Optionally authenticate NPM registry
-# RUN npm set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
-
+# Create app directory
 WORKDIR /app
 
-# Copy configuration files
-COPY tsconfig*.json ./
+# Copy package.json and package-lock.json files to the app directory
 COPY package*.json ./
 
-# Install dependencies from package-lock.json, see https://docs.npmjs.com/cli/v7/commands/npm-ci
-RUN npm ci
+# Install app dependencies
+RUN npm install
 
-# Copy application sources (.ts, .tsx, js)
-COPY src/ src/
+# Copy the rest of the application code to the app directory
+COPY . .
 
-# Build application (produces dist/ folder)
-RUN npm run build
+# Set the environment variables
+ENV NODE_ENV=development
+ENV PORT=8080
 
-# Runtime (production) layer
-FROM node:18 as production
+# DB
+ENV DB_HOST=127.0.0.1
+ENV DB_PORT=3307
+ENV DB_USER=ecommerce
+ENV DB_PASSWORD=1
+ENV DB_DATABASE=ecommerce
 
-# Optional NPM automation (auth) token build argument
-# ARG NPM_TOKEN
+# Expose the port
+EXPOSE $PORT
 
-# Optionally authenticate NPM registry
-# RUN npm set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
-
-WORKDIR /app
-
-# Copy dependencies files
-COPY package*.json ./
-
-# Install runtime dependecies (without dev/test dependecies)
-RUN npm ci --omit=dev
-
-# Copy production build
-COPY --from=development /app/dist/ ./dist/
-
-# Expose application port
-EXPOSE 4000
-
-# Start application
-CMD [ "node", "dist/main.js" ]
+# Start the NestJS application
+CMD ["npm", "run", "start:dev"]
