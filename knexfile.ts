@@ -6,8 +6,8 @@ const config: Knex.Config = {
     version: '5.7',
     useNullAsDefault: true,
     connection: {
-        host: '127.0.0.1',
-        port: 3307,
+        host: 'mysql_server',
+        port: 3306,
         user: 'root',
         password: '1',
         database: 'ecommerce',

@@ -22,11 +22,12 @@ import { CategoryModule } from './modules/category/category.module';
         }),
         KnexModule.forRoot({
             config: {
-                client: 'mysql',
+                client: 'mysql2',
                 version: '5.7',
                 useNullAsDefault: true,
                 connection: {
                     host: process.env.DB_HOST,
+                    port: process.env.DB_PORT as any,
                     user: process.env.DB_USER,
                     password: process.env.DB_PASSWORD,
                     database: process.env.DB_NAME,
